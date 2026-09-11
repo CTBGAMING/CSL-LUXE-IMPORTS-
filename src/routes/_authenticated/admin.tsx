@@ -8,7 +8,7 @@ import { DashboardPanel } from "@/components/admin/dashboard-panel";
 import { ProductsPanel } from "@/components/admin/products-panel";
 import { InventoryPanel } from "@/components/admin/inventory-panel";
 import { PurchasesPanel } from "@/components/admin/purchases-panel";
-import logo from "@/assets/csl-luxe-logo.png.asset.json";
+import logo from "@/assets/csl-luxe-logo.png";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -86,7 +86,7 @@ function AdminPage() {
       <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur-lg">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo.url} alt="CSL Luxe" className="h-9 w-9 object-contain" />
+            <img src={logo} alt="CSL Luxe" className="h-9 w-9 object-contain" />
             <div>
               <p className="font-serif text-sm tracking-widest text-silver-gradient">
                 CSL LUXE

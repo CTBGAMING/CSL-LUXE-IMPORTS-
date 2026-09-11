@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/cart";
-import logo from "@/assets/csl-luxe-logo.png.asset.json";
+import logo from "@/assets/csl-luxe-logo.png";
 import { CATEGORIES, type ProductCategory } from "@/lib/products";
 
 export type NavFilter = ProductCategory | "All" | "Pre-order";

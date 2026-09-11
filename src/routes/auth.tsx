@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
-import logo from "@/assets/csl-luxe-logo.png.asset.json";
+import logo from "@/assets/csl-luxe-logo.png";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -63,7 +63,7 @@ function AuthPage() {
     <div className="flex min-h-screen items-center justify-center bg-background px-6 py-16">
       <div className="w-full max-w-md">
         <Link to="/" className="mb-8 flex flex-col items-center gap-3">
-          <img src={logo.url} alt="CSL Luxe" className="h-20 w-20 object-contain" />
+          <img src={logo} alt="CSL Luxe" className="h-20 w-20 object-contain" />
           <p className="font-serif text-2xl tracking-widest text-silver-gradient">
             CSL LUXE
           </p>

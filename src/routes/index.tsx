@@ -5,7 +5,7 @@ import { SiteNav, type NavFilter } from "@/components/site-nav";
 import { useCart } from "@/lib/cart";
 import { fetchProducts, isAvailable, type ProductWithSignedUrl } from "@/lib/products";
 import { formatZAR } from "@/lib/format";
-import heroAsset from "@/assets/hero.jpg.asset.json";
+import heroAsset from "@/assets/hero.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -55,7 +55,7 @@ function Storefront() {
       <section className="relative overflow-hidden border-b border-border/60">
         <div className="absolute inset-0">
           <img
-            src={heroAsset.url}
+            src={heroAsset}
             alt=""
             className="h-full w-full object-cover object-center opacity-70"
           />
