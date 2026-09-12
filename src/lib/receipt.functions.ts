@@ -62,7 +62,7 @@ function mapOpenAiError(status: number, detail: string): string {
 
 export const scanReceipt = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: { dataUrl: string }) =>
+  .validator((input: { dataUrl: string }) =>
     z.object({ dataUrl: z.string().min(32) }).parse(input),
   )
   .handler(async ({ data, context }): Promise<ScannedReceipt> => {
@@ -81,7 +81,7 @@ export const scanReceipt = createServerFn({ method: "POST" })
       throw new Error("That file isn't a readable image — try a JPG or PNG screenshot.");
     }
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("[https://api.openai.com/v1/chat/completions](https://api.openai.com/v1/chat/completions)", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
