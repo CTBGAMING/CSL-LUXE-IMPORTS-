@@ -83,11 +83,12 @@ export const Route = createFileRoute("/api/enhance-image")({
         }
 
         const form = new FormData();
-        form.append("model", "gpt-image-1");
-        form.append("image", imageBlob, "source.jpg");
+        form.append("model", "dall-e-2");
+        form.append("image", imageBlob, "source.png");
         form.append("prompt", `${BASE_RULES}\n\nRetouch instruction: ${instruction}`);
-        form.append("stream", "true");
-        form.append("partial_images", "1");
+        form.append("n", "1");
+        form.append("size", "1024x1024");
+        form.append("response_format", "b64_json");
 
         const upstream = await fetch("https://api.openai.com/v1/images/edits", {
           method: "POST",
@@ -95,17 +96,17 @@ export const Route = createFileRoute("/api/enhance-image")({
           body: form,
         });
 
-        if (!upstream.ok || !upstream.body) {
+        if (!upstream.ok) {
           const detail = await upstream.text().catch(() => "");
-          let errorText = "Enhance failed — try again with a smaller image.";
+          let errorText = "Enhance failed — try again.";
           try {
             const parsed = JSON.parse(detail) as { error?: { code?: string; message?: string } };
             const code = parsed.error?.code ?? "";
             const message = parsed.error?.message ?? "";
             if (upstream.status === 401 || code === "invalid_api_key") {
-              errorText = "OpenAI key is invalid — check the key in settings.";
+              errorText = "OpenAI key is invalid — check settings.";
             } else if (code === "insufficient_quota") {
-              errorText = "OpenAI account is out of credits — add more at platform.openai.com.";
+              errorText = "OpenAI account is out of credits.";
             } else if (upstream.status === 429 || code === "rate_limit_exceeded") {
               errorText = "OpenAI is busy — wait a moment and try again.";
             } else if (message) {
@@ -113,15 +114,13 @@ export const Route = createFileRoute("/api/enhance-image")({
             }
           } catch {
             if (upstream.status === 401) errorText = "OpenAI key is invalid.";
-            if (upstream.status === 429) errorText = "OpenAI is busy — wait a moment and try again.";
           }
           console.error("enhance-image failed", upstream.status, detail.slice(0, 500));
           return new Response(errorText, { status: upstream.status });
         }
 
-        return new Response(upstream.body, {
-          headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-cache" },
-        });
+        const data = await upstream.json();
+        return Response.json(data);
       },
     },
   },
