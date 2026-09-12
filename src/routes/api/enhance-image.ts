@@ -9,16 +9,21 @@ const BASE_RULES =
   "sharpness and framing. Never add or remove parts of the product.";
 
 function dataUrlToBlob(dataUrl: string): Blob {
-  const match = dataUrl.match(/^data:([a-zA-Z0-9.+-]+);base64,(.+)$/);
-  if (!match) throw new Error("Invalid image data.");
-  const mime = match[1];
-  const byteChars = atob(match[2]);
-  const byteNumbers = new Array<number>(byteChars.length);
-  for (let i = 0; i < byteChars.length; i++) {
-    byteNumbers[i] = byteChars.charCodeAt(i);
+  try {
+    const parts = dataUrl.split(",");
+    if (parts.length < 2) throw new Error("Invalid data url");
+    const mimeMatch = parts[0].match(/:(.*?);/);
+    const mime = mimeMatch ? mimeMatch[1] : "image/png";
+    const bstr = atob(parts[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+  } catch (err) {
+    throw new Error("Could not read that image.");
   }
-  const bytes = new Uint8Array(byteNumbers);
-  return new Blob([bytes], { type: mime });
 }
 
 export const Route = createFileRoute("/api/enhance-image")({
@@ -69,7 +74,8 @@ export const Route = createFileRoute("/api/enhance-image")({
         const body = (await request.json()) as { dataUrl?: string; instruction?: string };
         const dataUrl = body.dataUrl ?? "";
         const instruction = (body.instruction ?? "").slice(0, 1000);
-        if (!/^data:image\/[a-zA-Z0-9.+-]+;base64,/.test(dataUrl)) {
+
+        if (!dataUrl.includes("base64")) {
           return new Response("That file isn't a readable image — try a JPG or PNG.", {
             status: 400,
           });
@@ -87,7 +93,7 @@ export const Route = createFileRoute("/api/enhance-image")({
         form.append("image", imageBlob, "source.png");
         form.append("prompt", `${BASE_RULES}\n\nRetouch instruction: ${instruction}`);
         form.append("n", "1");
-        form.append("size", "1024x1024");
+        form.append("size", "512x512");
         form.append("response_format", "b64_json");
 
         const upstream = await fetch("https://api.openai.com/v1/images/edits", {
