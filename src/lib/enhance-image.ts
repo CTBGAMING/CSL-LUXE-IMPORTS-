@@ -1,7 +1,7 @@
 import { flushSync } from "react-dom";
 import { supabase } from "@/integrations/supabase/client";
 
-const TARGET_SIZE = 1024;
+const TARGET_SIZE = 512;
 
 export async function fileToDataUrl(file: File): Promise<string> {
   const bitmap = await createImageBitmap(file);
