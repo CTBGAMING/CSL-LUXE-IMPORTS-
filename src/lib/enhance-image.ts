@@ -4,25 +4,38 @@ import { supabase } from "@/integrations/supabase/client";
 const TARGET_SIZE = 512;
 
 export async function fileToDataUrl(file: File): Promise<string> {
-  const bitmap = await createImageBitmap(file);
-  const canvas = document.createElement("canvas");
-  canvas.width = TARGET_SIZE;
-  canvas.height = TARGET_SIZE;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("Could not read that image.");
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = TARGET_SIZE;
+        canvas.height = TARGET_SIZE;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          reject(new Error("Could not read that image."));
+          return;
+        }
 
-  const scale = Math.max(TARGET_SIZE / bitmap.width, TARGET_SIZE / bitmap.height);
-  const w = bitmap.width * scale;
-  const h = bitmap.height * scale;
-  const x = (TARGET_SIZE - w) / 2;
-  const y = (TARGET_SIZE - h) / 2;
+        const scale = Math.max(TARGET_SIZE / img.width, TARGET_SIZE / img.height);
+        const w = img.width * scale;
+        const h = img.height * scale;
+        const x = (TARGET_SIZE - w) / 2;
+        const y = (TARGET_SIZE - h) / 2;
 
-  ctx.fillStyle = "#FFFFFF";
-  ctx.fillRect(0, 0, TARGET_SIZE, TARGET_SIZE);
-  ctx.drawImage(bitmap, x, y, w, h);
-  bitmap.close();
-  
-  return canvas.toDataURL("image/png", 1.0);
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, TARGET_SIZE, TARGET_SIZE);
+        ctx.drawImage(img, x, y, w, h);
+
+        resolve(canvas.toDataURL("image/png", 1.0));
+      };
+      img.onerror = () => reject(new Error("Could not load image file."));
+      img.src = e.target?.result as string;
+    };
+    reader.onerror = () => reject(new Error("Could not read file data."));
+    reader.readAsDataURL(file);
+  });
 }
 
 export async function dataUrlToFile(dataUrl: string, name: string): Promise<File> {

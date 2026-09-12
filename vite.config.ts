@@ -16,4 +16,9 @@ export default defineConfig({
   build: {
     cssMinify: false,
   },
+  nitro: {
+    routeRules: {
+      '/api/**': { cors: true },
+    },
+  },
 });
