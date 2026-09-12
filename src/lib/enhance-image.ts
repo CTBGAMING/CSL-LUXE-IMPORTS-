@@ -64,7 +64,8 @@ export async function enhanceImage(
   });
 
   if (!res.ok) {
-    const errorText = await res.text().catch(() => "");
+    const errorText = await res.text();
+    console.error("Backend error response:", errorText);
     throw new Error(errorText || `Enhance failed (${res.status})`);
   }
 
