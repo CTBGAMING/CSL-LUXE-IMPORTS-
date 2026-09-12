@@ -76,7 +76,7 @@ async function fetchProduct(id) {
 	return toSigned(row, await signImagePaths([...paths]));
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-uYa5hawx.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-FfFp724m.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var styles_default = "/assets/styles-DBmXHB85.css";
@@ -534,7 +534,7 @@ function RootComponent() {
 		] })
 	});
 }
-var $$splitComponentImporter$4 = () => import("./routes-78dMGXMU.mjs");
+var $$splitComponentImporter$4 = () => import("./routes-BULh2g-S.mjs");
 var Route$5 = createFileRoute("/")({
 	head: () => ({ meta: [
 		{ title: "CSL Luxe Imports — Timeless Elegance. Imported Excellence." },
@@ -598,7 +598,7 @@ var Route$3 = createFileRoute("/auth")({
 	] }),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./admin-D_wvS_kW.mjs");
+var $$splitComponentImporter$1 = () => import("./admin-CMqSBqiK.mjs");
 var Route$2 = createFileRoute("/_authenticated/admin")({
 	head: () => ({ meta: [
 		{ title: "Admin — CSL Luxe Imports" },
@@ -713,7 +713,7 @@ var productQueryOptions = (id) => queryOptions({
 });
 var $$splitNotFoundComponentImporter = () => import("./product._id-BTqvbxm_.mjs");
 var $$splitErrorComponentImporter = () => import("./product._id-CMtV0FKk.mjs");
-var $$splitComponentImporter = () => import("./product._id-CLyEz7yZ.mjs");
+var $$splitComponentImporter = () => import("./product._id-D8t-U-cF.mjs");
 var Route = createFileRoute("/product/$id")({
 	loader: ({ params, context }) => context.queryClient.ensureQueryData(productQueryOptions(params.id)),
 	head: ({ loaderData }) => {

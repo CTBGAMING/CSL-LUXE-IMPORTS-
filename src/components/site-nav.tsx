@@ -25,7 +25,7 @@ export function SiteNav({ activeCategory = "All", onCategoryChange }: Props) {
     <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur-lg">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo.url} alt="CSL Luxe Imports" className="h-12 w-12 object-contain" />
+          <img src={logo} alt="CSL Luxe Imports" className="h-12 w-12 object-contain" />
           <div className="hidden sm:block">
             <p className="font-serif text-lg leading-none tracking-widest text-silver-gradient">
               CSL LUXE

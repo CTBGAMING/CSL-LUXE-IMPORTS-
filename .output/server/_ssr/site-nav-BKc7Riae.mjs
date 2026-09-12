@@ -2,8 +2,8 @@ import { v as Link, y as useNavigate } from "../_libs/@tanstack/react-router+[..
 import { o as require_jsx_runtime } from "../_libs/react+tanstack__react-query.mjs";
 import { t as csl_luxe_logo_default } from "./csl-luxe-logo-Dg7BTdpi.mjs";
 import { s as ShoppingBag } from "../_libs/lucide-react.mjs";
-import { a as CATEGORIES, i as useCart } from "./router-uYa5hawx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/site-nav-CfPAMny9.js
+import { a as CATEGORIES, i as useCart } from "./router-FfFp724m.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/site-nav-BKc7Riae.js
 var import_jsx_runtime = require_jsx_runtime();
 var FILTERS = [
 	"All",
@@ -29,7 +29,7 @@ function SiteNav({ activeCategory = "All", onCategoryChange }) {
 					to: "/",
 					className: "flex items-center gap-3",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-						src: csl_luxe_logo_default.url,
+						src: csl_luxe_logo_default,
 						alt: "CSL Luxe Imports",
 						className: "h-12 w-12 object-contain"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {

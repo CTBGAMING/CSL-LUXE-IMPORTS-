@@ -2,15 +2,15 @@ import { r as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { I as isRedirect, b as useRouter, l as require_react_dom, v as Link, y as useNavigate } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as useQueryClient, o as require_jsx_runtime, r as useQuery } from "../_libs/react+tanstack__react-query.mjs";
-import { a as getServerFnById, i as TSS_SERVER_FUNCTION, r as createServerFn } from "./server--yIwLmJV.mjs";
-import { t as requireSupabaseAuth } from "./auth-middleware-CvAXe84Y.mjs";
+import { a as getServerFnById, i as TSS_SERVER_FUNCTION, r as createServerFn } from "./server-CJcie1Pg.mjs";
+import { t as requireSupabaseAuth } from "./auth-middleware-CgDK2GLf.mjs";
 import { t as supabase } from "./client-XvGZhuVm.mjs";
 import { t as csl_luxe_logo_default } from "./csl-luxe-logo-Dg7BTdpi.mjs";
 import { i as string, r as object } from "../_libs/zod.mjs";
 import { _ as Coins, a as Trash2, b as Check, c as ShieldCheck, d as Pencil, f as Package, g as LayoutDashboard, h as LoaderCircle, i as TrendingUp, l as Receipt, m as LogOut, n as Truck, o as Sparkles, p as Minus, r as TriangleAlert, t as X, u as Plus, x as Boxes } from "../_libs/lucide-react.mjs";
 import { t as createParser } from "../_libs/eventsource-parser.mjs";
-import { a as CATEGORIES, c as formatZAR, o as PREORDER_WINDOWS, s as fetchProducts } from "./router-uYa5hawx.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/admin-D_wvS_kW.js
+import { a as CATEGORIES, c as formatZAR, o as PREORDER_WINDOWS, s as fetchProducts } from "./router-FfFp724m.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/admin-CMqSBqiK.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var import_react_dom = require_react_dom();

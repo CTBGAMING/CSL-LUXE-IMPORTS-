@@ -1,0 +1,1 @@
+import{o as e}from"./useSelector-DY1WPcDI.js";import{A as t}from"./index-C8Ayer1l.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as component};

@@ -2,9 +2,9 @@ import { r as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { v as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { o as require_jsx_runtime, r as useQuery } from "../_libs/react+tanstack__react-query.mjs";
-import { c as formatZAR, i as useCart, l as isAvailable, s as fetchProducts } from "./router-uYa5hawx.mjs";
-import { t as SiteNav } from "./site-nav-CfPAMny9.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-78dMGXMU.js
+import { c as formatZAR, i as useCart, l as isAvailable, s as fetchProducts } from "./router-FfFp724m.mjs";
+import { t as SiteNav } from "./site-nav-BKc7Riae.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BULh2g-S.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var hero_default = "/assets/hero-Dj8xsjft.jpg";
