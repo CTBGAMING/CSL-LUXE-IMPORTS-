@@ -89,12 +89,11 @@ export const Route = createFileRoute("/api/enhance-image")({
         }
 
         const form = new FormData();
-        form.append("model", "dall-e-2");
+        form.append("model", "gpt-image-1");
         form.append("image", imageBlob, "source.png");
         form.append("prompt", `${BASE_RULES}\n\nRetouch instruction: ${instruction}`);
         form.append("n", "1");
-        form.append("size", "512x512");
-        form.append("response_format", "b64_json");
+        form.append("size", "1024x1024");
 
         const upstream = await fetch("https://api.openai.com/v1/images/edits", {
           method: "POST",
